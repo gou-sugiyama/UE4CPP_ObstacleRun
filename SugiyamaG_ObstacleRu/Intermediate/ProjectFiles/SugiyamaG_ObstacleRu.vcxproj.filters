@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\SugiyamaG_ObstacleRu.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{3D10FDDD-38BA-484B-A80B-25F1862926F4}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\SugiyamaG_ObstacleRu.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\SugiyamaG_ObstacleRuEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{6A3573A0-A23D-42EE-98B3-980FCC1AB684}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\SugiyamaG_ObstacleRu">
+      <UniqueIdentifier>{38CA4782-EA29-45FD-824C-CC4B6595A127}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\SugiyamaG_ObstacleRu\SugiyamaG_ObstacleRu.Build.cs">
+      <Filter>Source\SugiyamaG_ObstacleRu</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\SugiyamaG_ObstacleRu\SugiyamaG_ObstacleRu.cpp">
+      <Filter>Source\SugiyamaG_ObstacleRu</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SugiyamaG_ObstacleRu\SugiyamaG_ObstacleRu.h">
+      <Filter>Source\SugiyamaG_ObstacleRu</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\SugiyamaG_ObstacleRu\SugiyamaG_ObstacleRuGameModeBase.cpp">
+      <Filter>Source\SugiyamaG_ObstacleRu</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\SugiyamaG_ObstacleRu\SugiyamaG_ObstacleRuGameModeBase.h">
+      <Filter>Source\SugiyamaG_ObstacleRu</Filter>
+    </ClInclude>
+    <Filter Include="Source\SugiyamaG_ObstacleRu\Private">
+      <UniqueIdentifier>{3B341760-864B-4E0C-AE85-95FD666497E1}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\SugiyamaG_ObstacleRu\Private\MyCharacter.cpp">
+      <Filter>Source\SugiyamaG_ObstacleRu\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\SugiyamaG_ObstacleRu\Public">
+      <UniqueIdentifier>{A90E79A9-4D15-470F-92C5-C152B3CC7471}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\SugiyamaG_ObstacleRu\Public\MyCharacter.h">
+      <Filter>Source\SugiyamaG_ObstacleRu\Public</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

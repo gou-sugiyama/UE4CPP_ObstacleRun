@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "SugiyamaG_ObstacleRu",
+			"Path": "C:\\PG-R5\\C++\\UE-Project\\SugiyamaG_ObstacleRu\\Source\\SugiyamaG_ObstacleRu.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "SugiyamaG_ObstacleRuEditor",
+			"Path": "C:\\PG-R5\\C++\\UE-Project\\SugiyamaG_ObstacleRu\\Source\\SugiyamaG_ObstacleRuEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
