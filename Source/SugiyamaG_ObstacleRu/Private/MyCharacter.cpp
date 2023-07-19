@@ -27,6 +27,14 @@ AMyCharacter::AMyCharacter()
 	// StaticMeshComponentをRootComponentにAttachする
 	StaticMesh->SetupAttachment(RootComponent);
 	//-----------------------------------------------------------
+
+	// カメラの設定---------------------------------------------------------------
+	// カメラコンポーネントを作成
+	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
+
+	// ルートコンポーネントとしてカメラをアタッチ
+	CameraComponent->SetupAttachment(RootComponent);
+	//---------------------------------------------------------------
 }
 
 // ゲーム開始時、またはスポーン時に呼ばれる

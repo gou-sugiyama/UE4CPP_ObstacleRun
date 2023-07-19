@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "Camera/CameraComponent.h"
 #include "MyCharacter.generated.h"
 
 UCLASS()
@@ -31,5 +32,8 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* StaticMesh;
+
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	UCameraComponent* CameraComponent;
 
 };
