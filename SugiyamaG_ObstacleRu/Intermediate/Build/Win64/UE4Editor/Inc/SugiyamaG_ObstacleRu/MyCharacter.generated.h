@@ -21,7 +21,7 @@ private: \
 	static void StaticRegisterNativesAMyCharacter(); \
 	friend struct Z_Construct_UClass_AMyCharacter_Statics; \
 public: \
-	DECLARE_CLASS(AMyCharacter, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/SugiyamaG_ObstacleRu"), NO_API) \
+	DECLARE_CLASS(AMyCharacter, APawn, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/SugiyamaG_ObstacleRu"), NO_API) \
 	DECLARE_SERIALIZER(AMyCharacter)
 
 
@@ -30,7 +30,7 @@ private: \
 	static void StaticRegisterNativesAMyCharacter(); \
 	friend struct Z_Construct_UClass_AMyCharacter_Statics; \
 public: \
-	DECLARE_CLASS(AMyCharacter, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/SugiyamaG_ObstacleRu"), NO_API) \
+	DECLARE_CLASS(AMyCharacter, APawn, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/SugiyamaG_ObstacleRu"), NO_API) \
 	DECLARE_SERIALIZER(AMyCharacter)
 
 

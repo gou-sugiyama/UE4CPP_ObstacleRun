@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"C:\\PG-R5\\C++\\UE-Project\\SugiyamaG_ObstacleRu\\Source\\SugiyamaG_ObstacleRu\\SugiyamaG_ObstacleRu.Build.cs",
-		"C:\\PG-R5\\C++\\UE-Project\\SugiyamaG_ObstacleRu\\Source\\SugiyamaG_ObstacleRu.Target.cs",
-		"C:\\PG-R5\\C++\\UE-Project\\SugiyamaG_ObstacleRu\\Source\\SugiyamaG_ObstacleRuEditor.Target.cs"
+		"C:\\PG-R5\\C++\\UE-Project\\UE4CPP_ObstacleRun\\SugiyamaG_ObstacleRu\\Source\\SugiyamaG_ObstacleRu\\SugiyamaG_ObstacleRu.Build.cs",
+		"C:\\PG-R5\\C++\\UE-Project\\UE4CPP_ObstacleRun\\SugiyamaG_ObstacleRu\\Source\\SugiyamaG_ObstacleRu.Target.cs",
+		"C:\\PG-R5\\C++\\UE-Project\\UE4CPP_ObstacleRun\\SugiyamaG_ObstacleRu\\Source\\SugiyamaG_ObstacleRuEditor.Target.cs"
 	],
 	"EngineVersion": "4.25.4"
 }

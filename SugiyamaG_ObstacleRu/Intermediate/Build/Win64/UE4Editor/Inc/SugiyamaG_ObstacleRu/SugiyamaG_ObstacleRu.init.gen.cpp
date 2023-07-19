@@ -21,8 +21,8 @@ void EmptyLinkFunctionForGeneratedCodeSugiyamaG_ObstacleRu_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0xB3D1754D,
-				0xD9C6EACF,
+				0x54BE3FBB,
+				0x8441EC85,
 				METADATA_PARAMS(nullptr, 0)
 			};
 			UE4CodeGen_Private::ConstructUPackage(ReturnPackage, PackageParams);

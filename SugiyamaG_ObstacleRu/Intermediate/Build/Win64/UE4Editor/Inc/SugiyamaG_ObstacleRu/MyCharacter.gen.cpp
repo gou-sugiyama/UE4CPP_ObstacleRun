@@ -15,7 +15,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 // Cross Module References
 	SUGIYAMAG_OBSTACLERU_API UClass* Z_Construct_UClass_AMyCharacter_NoRegister();
 	SUGIYAMAG_OBSTACLERU_API UClass* Z_Construct_UClass_AMyCharacter();
-	ENGINE_API UClass* Z_Construct_UClass_AActor();
+	ENGINE_API UClass* Z_Construct_UClass_APawn();
 	UPackage* Z_Construct_UPackage__Script_SugiyamaG_ObstacleRu();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 // End Cross Module References
@@ -41,11 +41,12 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		static const UE4CodeGen_Private::FClassParams ClassParams;
 	};
 	UObject* (*const Z_Construct_UClass_AMyCharacter_Statics::DependentSingletons[])() = {
-		(UObject* (*)())Z_Construct_UClass_AActor,
+		(UObject* (*)())Z_Construct_UClass_APawn,
 		(UObject* (*)())Z_Construct_UPackage__Script_SugiyamaG_ObstacleRu,
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AMyCharacter_Statics::Class_MetaDataParams[] = {
+		{ "HideCategories", "Navigation" },
 		{ "IncludePath", "MyCharacter.h" },
 		{ "ModuleRelativePath", "Public/MyCharacter.h" },
 	};
@@ -66,7 +67,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 	};
 	const UE4CodeGen_Private::FClassParams Z_Construct_UClass_AMyCharacter_Statics::ClassParams = {
 		&AMyCharacter::StaticClass,
-		"Engine",
+		"Game",
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
 		nullptr,
@@ -88,7 +89,7 @@ void EmptyLinkFunctionForGeneratedCodeMyCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AMyCharacter, 1532834470);
+	IMPLEMENT_CLASS(AMyCharacter, 1503445984);
 	template<> SUGIYAMAG_OBSTACLERU_API UClass* StaticClass<AMyCharacter>()
 	{
 		return AMyCharacter::StaticClass();

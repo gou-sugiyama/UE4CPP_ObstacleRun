@@ -32,7 +32,7 @@
 /wd4244
 /wd4838
 /I .
-/I C:\PG-R5\C++\UE-Project\SugiyamaG_ObstacleRu\Source\SugiyamaG_ObstacleRu\Private
+/I C:\PG-R5\C++\UE-Project\UE4CPP_ObstacleRun\SugiyamaG_ObstacleRu\Source\SugiyamaG_ObstacleRu\Private
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\Engine
 /I Runtime
 /I Runtime\Engine\Classes
@@ -231,9 +231,9 @@
 /I Runtime\Experimental\GeometryCollectionSimulationCore\Public
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\ClothingSystemRuntimeInterface
 /I Runtime\ClothingSystemRuntimeInterface\Public
-/I C:\PG-R5\C++\UE-Project\SugiyamaG_ObstacleRu\Intermediate\Build\Win64\UE4Editor\Inc\SugiyamaG_ObstacleRu
-/I C:\PG-R5\C++\UE-Project\SugiyamaG_ObstacleRu\Source
-/I C:\PG-R5\C++\UE-Project\SugiyamaG_ObstacleRu\Source\SugiyamaG_ObstacleRu\Public
+/I C:\PG-R5\C++\UE-Project\UE4CPP_ObstacleRun\SugiyamaG_ObstacleRu\Intermediate\Build\Win64\UE4Editor\Inc\SugiyamaG_ObstacleRu
+/I C:\PG-R5\C++\UE-Project\UE4CPP_ObstacleRun\SugiyamaG_ObstacleRu\Source
+/I C:\PG-R5\C++\UE-Project\UE4CPP_ObstacleRun\SugiyamaG_ObstacleRu\Source\SugiyamaG_ObstacleRu\Public
 /I ThirdParty\PhysX3\PxShared\include
 /I ThirdParty\PhysX3\PxShared\include\cudamanager
 /I ThirdParty\PhysX3\PxShared\include\filebuf
@@ -263,12 +263,12 @@
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22000.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22000.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22000.0\winrt"
-/FI"C:\PG-R5\C++\UE-Project\SugiyamaG_ObstacleRu\Intermediate\Build\Win64\SugiyamaG_ObstacleRuEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Yu"C:\PG-R5\C++\UE-Project\SugiyamaG_ObstacleRu\Intermediate\Build\Win64\SugiyamaG_ObstacleRuEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Fp"C:\PG-R5\C++\UE-Project\SugiyamaG_ObstacleRu\Intermediate\Build\Win64\SugiyamaG_ObstacleRuEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
-"C:\PG-R5\C++\UE-Project\SugiyamaG_ObstacleRu\Source\SugiyamaG_ObstacleRu\SugiyamaG_ObstacleRuGameModeBase.cpp"
-/FI"C:\PG-R5\C++\UE-Project\SugiyamaG_ObstacleRu\Intermediate\Build\Win64\UE4Editor\Development\SugiyamaG_ObstacleRu\Definitions.SugiyamaG_ObstacleRu.h"
-/Fo"C:\PG-R5\C++\UE-Project\SugiyamaG_ObstacleRu\Intermediate\Build\Win64\UE4Editor\Development\SugiyamaG_ObstacleRu\SugiyamaG_ObstacleRuGameModeBase.cpp.obj"
+/FI"C:\PG-R5\C++\UE-Project\UE4CPP_ObstacleRun\SugiyamaG_ObstacleRu\Intermediate\Build\Win64\SugiyamaG_ObstacleRuEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/Yu"C:\PG-R5\C++\UE-Project\UE4CPP_ObstacleRun\SugiyamaG_ObstacleRu\Intermediate\Build\Win64\SugiyamaG_ObstacleRuEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/Fp"C:\PG-R5\C++\UE-Project\UE4CPP_ObstacleRun\SugiyamaG_ObstacleRu\Intermediate\Build\Win64\SugiyamaG_ObstacleRuEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
+"C:\PG-R5\C++\UE-Project\UE4CPP_ObstacleRun\SugiyamaG_ObstacleRu\Source\SugiyamaG_ObstacleRu\SugiyamaG_ObstacleRuGameModeBase.cpp"
+/FI"C:\PG-R5\C++\UE-Project\UE4CPP_ObstacleRun\SugiyamaG_ObstacleRu\Intermediate\Build\Win64\UE4Editor\Development\SugiyamaG_ObstacleRu\Definitions.SugiyamaG_ObstacleRu.h"
+/Fo"C:\PG-R5\C++\UE-Project\UE4CPP_ObstacleRun\SugiyamaG_ObstacleRu\Intermediate\Build\Win64\UE4Editor\Development\SugiyamaG_ObstacleRu\SugiyamaG_ObstacleRuGameModeBase.cpp.obj"
 /TP
 /GR-
 /W4
