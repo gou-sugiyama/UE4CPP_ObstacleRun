@@ -34,6 +34,10 @@ AMyCharacter::AMyCharacter()
 
 	// ルートコンポーネントとしてカメラをアタッチ
 	CameraComponent->SetupAttachment(RootComponent);
+	CameraComponent->SetRelativeLocation(FVector(-420.f, 0.0f, 140.0f));
+	FVector Rotation(0.f, -20.f, 0.f);
+	FQuat QuatRotation = FQuat::MakeFromEuler(Rotation);
+	CameraComponent->SetRelativeRotation(QuatRotation);
 	//---------------------------------------------------------------
 }
 
