@@ -2,6 +2,9 @@
 
 
 #include "MyCharacter.h"
+#include "Kismet/GameplayStatics.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "Camera/CameraComponent.h"
 
 	// デフォルト値の設定
 AMyCharacter::AMyCharacter()
@@ -18,26 +21,38 @@ AMyCharacter::AMyCharacter()
 
 	// スタティックメッシュの設定--------------------------------
 	// StaticMeshComponentを作成する
-	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
+	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
 
 	// StaticMeshをLaodしてStaticMeshComponentのStaticMeshに設定する
 	UStaticMesh* Mesh = LoadObject<UStaticMesh>(NULL, TEXT("/Engine/EditorMeshes/EditorCube"), NULL, LOAD_None, NULL);
-	StaticMesh->SetStaticMesh(Mesh);
+	StaticMeshComponent->SetStaticMesh(Mesh);
 
 	// StaticMeshComponentをRootComponentにAttachする
-	StaticMesh->SetupAttachment(RootComponent);
+	StaticMeshComponent->SetupAttachment(RootComponent);
 	//-----------------------------------------------------------
 
 	// カメラの設定---------------------------------------------------------------
+	// スプリングアームコンポーネントを作成
+	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComponent"));
+	SpringArmComponent->SetupAttachment(StaticMeshComponent);
+	SpringArmComponent->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, 50.0f), FRotator(-60.0f, 0.0f, 0.0f));
+	SpringArmComponent->TargetArmLength = 400.f;
+	SpringArmComponent->bEnableCameraLag = true;
+	SpringArmComponent->CameraLagSpeed = 15.0f;
+
 	// カメラコンポーネントを作成
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
 
 	// ルートコンポーネントとしてカメラをアタッチ
-	CameraComponent->SetupAttachment(RootComponent);
-	CameraComponent->SetRelativeLocation(FVector(-420.f, 0.0f, 140.0f));
-	FVector Rotation(0.f, -20.f, 0.f);
-	FQuat QuatRotation = FQuat::MakeFromEuler(Rotation);
-	CameraComponent->SetRelativeRotation(QuatRotation);
+	CameraComponent->SetupAttachment(SpringArmComponent, USpringArmComponent::SocketName);
+	//CameraComponent->SetRelativeLocation(FVector(-420.f, 0.0f, 140.0f));
+	//FVector Rotation(0.f, -20.f, 0.f);
+	//FQuat QuatRotation = FQuat::MakeFromEuler(Rotation);
+	//CameraComponent->SetRelativeRotation(QuatRotation);
+
+	//メインカメラに設定する
+	
+
 	//---------------------------------------------------------------
 }
 

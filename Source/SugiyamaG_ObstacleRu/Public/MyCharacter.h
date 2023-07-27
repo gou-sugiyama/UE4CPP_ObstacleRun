@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
-#include "Camera/CameraComponent.h"
 #include "MyCharacter.generated.h"
 
 UCLASS()
@@ -25,15 +24,18 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 
-private:
+protected:
 	// Scene Component
-	//UPROPERTY(EditAnywhere) <- ‰B‚µ‚Ä–â‘è‚È‚³‚»‚¤HHH
+	UPROPERTY(EditAnywhere)
 	USceneComponent* DefaultSceneRoot;
 
 	UPROPERTY(EditAnywhere)
-	UStaticMeshComponent* StaticMesh;
+	UStaticMeshComponent* StaticMeshComponent;
+
+	UPROPERTY(EditAnywhere)
+	class USpringArmComponent* SpringArmComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
-	UCameraComponent* CameraComponent;
+	class UCameraComponent* CameraComponent;
 
 };
