@@ -38,4 +38,8 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* CameraComponent;
 
+	// 入力に機能をバインドするために呼び出される
+	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
+
+
 };

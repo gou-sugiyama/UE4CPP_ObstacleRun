@@ -9,8 +9,10 @@
 	// デフォルト値の設定
 AMyCharacter::AMyCharacter()
 {
+
  	// 毎フレーム実行する処理がある場合はこれをオンにする。
 	PrimaryActorTick.bCanEverTick = false;
+	AutoPossessPlayer = EAutoReceiveInput::Player0;
 
 	// デフォルトシーンルートの設定------------------------------
 	// SceneComponentを作成する
@@ -35,8 +37,8 @@ AMyCharacter::AMyCharacter()
 	// スプリングアームコンポーネントを作成
 	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComponent"));
 	SpringArmComponent->SetupAttachment(StaticMeshComponent);
-	SpringArmComponent->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, 50.0f), FRotator(-60.0f, 0.0f, 0.0f));
-	SpringArmComponent->TargetArmLength = 400.f;
+	SpringArmComponent->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, 100.0f), FRotator(-10.0f, 0.0f, 0.0f));
+	SpringArmComponent->TargetArmLength = 800.f;
 	SpringArmComponent->bEnableCameraLag = true;
 	SpringArmComponent->CameraLagSpeed = 15.0f;
 
@@ -70,3 +72,8 @@ void AMyCharacter::Tick(float DeltaTime)
 
 }
 
+// 機能を入力にバインドするために呼び出される
+void AMyCharacter::SetupPlayerInputComponent(class UInputComponent* InputComponent)
+{
+	Super::SetupPlayerInputComponent(InputComponent);
+}
