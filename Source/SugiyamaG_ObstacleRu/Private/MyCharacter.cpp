@@ -70,10 +70,38 @@ void AMyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	// 移動に設定した軸に基づいて座標を変える
+	{
+		if (!CurrentVelocity.IsZero())
+		{
+			FVector NewLocation = GetActorLocation() + (CurrentVelocity * DeltaTime);
+			SetActorLocation(NewLocation);
+		}
+	}
 }
 
 // 機能を入力にバインドするために呼び出される
 void AMyCharacter::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 {
 	Super::SetupPlayerInputComponent(InputComponent);
+
+	// MoveRight, MoveForward に紐づけられたキーに毎フレーム反応する
+	InputComponent->BindAxis("MoveRight", this, &AMyCharacter::MoveRight);
+	InputComponent->BindAxis("MoveForward", this, &AMyCharacter::MoveForward);
+}
+
+// X座標に対する軸マッピングの制御
+void AMyCharacter::MoveRight(float AxisValue)
+{
+	// 1 秒間に前後へ 100 単位移動
+	// FMath::Clamp 関数を使って AxisValue の値を -1.0 ~ 1.0 の範囲に制御している
+	CurrentVelocity.X = FMath::Clamp(AxisValue, -1.0f, 1.0f) * 100.0f;
+}
+
+// Y座標に対する軸マッピングの制御
+void AMyCharacter::MoveForward(float AxisValue)
+{
+	// 1 秒間に左右へ 100 単位移動
+	// FMath::Clamp 関数を使って AxisValue の値を -1.0 ~ 1.0 の範囲に制御している
+	CurrentVelocity.Y = FMath::Clamp(AxisValue, -1.0f, 1.0f) * 100.0f;
 }

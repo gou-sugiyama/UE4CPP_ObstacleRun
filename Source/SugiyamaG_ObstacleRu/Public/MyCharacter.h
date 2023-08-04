@@ -41,5 +41,12 @@ protected:
 	// 入力に機能をバインドするために呼び出される
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
+	//Input functions (入力関数)
+	void MoveForward(float AxisValue);
+	void MoveRight(float AxisValue);
+
+	//Input variables (入力変数)
+	FVector CurrentVelocity;
+
 
 };
