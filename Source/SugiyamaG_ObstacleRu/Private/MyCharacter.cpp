@@ -3,6 +3,7 @@
 
 #include "MyCharacter.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 
@@ -81,18 +82,21 @@ void AMyCharacter::Tick(float DeltaTime)
 }
 
 // 機能を入力にバインドするために呼び出される
-void AMyCharacter::SetupPlayerInputComponent(class UInputComponent* InputComponent)
+void AMyCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
-	Super::SetupPlayerInputComponent(InputComponent);
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	// MoveRight, MoveForward に紐づけられたキーに毎フレーム反応する
-	InputComponent->BindAxis("MoveRight", this, &AMyCharacter::MoveRight);
-	InputComponent->BindAxis("MoveForward", this, &AMyCharacter::MoveForward);
+	PlayerInputComponent->BindAxis("MoveRight", this, &AMyCharacter::MoveRight);
+	PlayerInputComponent->BindAxis("MoveForward", this, &AMyCharacter::MoveForward);
 }
 
 // X座標に対する軸マッピングの制御
 void AMyCharacter::MoveRight(float AxisValue)
 {
+	
+	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("AxisValue :  %.1f")
+		, AxisValue), true, true, FColor::Cyan, 10.f);
 	// 1 秒間に前後へ 100 単位移動
 	// FMath::Clamp 関数を使って AxisValue の値を -1.0 ~ 1.0 の範囲に制御している
 	CurrentVelocity.X = FMath::Clamp(AxisValue, -1.0f, 1.0f) * 100.0f;
@@ -104,4 +108,9 @@ void AMyCharacter::MoveForward(float AxisValue)
 	// 1 秒間に左右へ 100 単位移動
 	// FMath::Clamp 関数を使って AxisValue の値を -1.0 ~ 1.0 の範囲に制御している
 	CurrentVelocity.Y = FMath::Clamp(AxisValue, -1.0f, 1.0f) * 100.0f;
+}
+
+void AMyCharacter::InputTest(float test)
+{
+	UKismetSystemLibrary::PrintString(this, "C++ Hello World!", true, true, FColor::Cyan, 2.f);
 }

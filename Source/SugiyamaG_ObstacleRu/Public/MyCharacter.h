@@ -44,7 +44,7 @@ protected:
 	//Input functions (“ü—ÍŠÖ”)
 	void MoveForward(float AxisValue);
 	void MoveRight(float AxisValue);
-
+	void InputTest(float test);
 	//Input variables (“ü—Í•Ï”)
 	FVector CurrentVelocity;
 
