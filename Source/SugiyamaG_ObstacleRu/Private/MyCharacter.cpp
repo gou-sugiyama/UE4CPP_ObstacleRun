@@ -12,7 +12,7 @@ AMyCharacter::AMyCharacter()
 {
 
  	// 毎フレーム実行する処理がある場合はこれをオンにする。
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 
 	// デフォルトシーンルートの設定------------------------------
@@ -42,7 +42,7 @@ AMyCharacter::AMyCharacter()
 	SpringArmComponent->TargetArmLength = 800.f;
 	SpringArmComponent->bEnableCameraLag = true;
 	SpringArmComponent->CameraLagSpeed = 15.0f;
-
+		
 	// カメラコンポーネントを作成
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
 
@@ -69,12 +69,25 @@ void AMyCharacter::BeginPlay()
 // 毎フレーム呼ばれる
 void AMyCharacter::Tick(float DeltaTime)
 {
-	Super::Tick(DeltaTime);
-
+	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%.1f,%.1f,%.1f")
+		, GetActorLocation().X
+		, GetActorLocation().Y
+		, GetActorLocation().Z)
+		, true, true, FColor::Cyan, 1.0f);
 	// 移動に設定した軸に基づいて座標を変える
 	{
-		if (!CurrentVelocity.IsZero())
+		if (!(CurrentVelocity.IsZero()))
 		{
+
+			UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%.1f,%.1f,%.1f")
+				, GetActorLocation().X
+				, GetActorLocation().Y
+				, GetActorLocation().Z)
+				, true, true, FColor::Cyan, 1.0f);
+
+			FVector ProgressionVector = FVector(CameraComponent->GetForwardVector());
+
+			//VectorNormalize(&ProgressionVector);////////////////////////////////////////////////////////////////
 			FVector NewLocation = GetActorLocation() + (CurrentVelocity * DeltaTime);
 			SetActorLocation(NewLocation);
 		}
@@ -94,17 +107,35 @@ void AMyCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputC
 // X座標に対する軸マッピングの制御
 void AMyCharacter::MoveRight(float AxisValue)
 {
-	
-	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("AxisValue :  %.1f")
-		, AxisValue), true, true, FColor::Cyan, 10.f);
+	if (AxisValue)
+	{
+		UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("MoveRight"))
+			, true
+			, true
+			, FColor::Cyan
+			, 0.f);
+	}
 	// 1 秒間に前後へ 100 単位移動
 	// FMath::Clamp 関数を使って AxisValue の値を -1.0 ~ 1.0 の範囲に制御している
 	CurrentVelocity.X = FMath::Clamp(AxisValue, -1.0f, 1.0f) * 100.0f;
+	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%f"), CurrentVelocity.X)
+		, true
+		, true
+		, FColor::Cyan
+		, 0.f);
 }
 
 // Y座標に対する軸マッピングの制御
 void AMyCharacter::MoveForward(float AxisValue)
 {
+	if (AxisValue)
+	{
+		UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("MoveForward"))
+			, true
+			, true
+			, FColor::Cyan
+			, 0.f);
+	}
 	// 1 秒間に左右へ 100 単位移動
 	// FMath::Clamp 関数を使って AxisValue の値を -1.0 ~ 1.0 の範囲に制御している
 	CurrentVelocity.Y = FMath::Clamp(AxisValue, -1.0f, 1.0f) * 100.0f;
