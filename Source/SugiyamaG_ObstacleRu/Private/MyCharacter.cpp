@@ -12,8 +12,8 @@ AMyCharacter::AMyCharacter()
 {
 
  	// 毎フレーム実行する処理がある場合はこれをオンにする。
-	PrimaryActorTick.bCanEverTick = true;
-	AutoPossessPlayer = EAutoReceiveInput::Player0;
+	PrimaryActorTick.bCanEverTick = false;
+	//AutoPossessPlayer = EAutoReceiveInput::Player0;
 
 	// デフォルトシーンルートの設定------------------------------
 	// SceneComponentを作成する
@@ -57,6 +57,7 @@ AMyCharacter::AMyCharacter()
 	
 
 	//---------------------------------------------------------------
+
 }
 
 // ゲーム開始時、またはスポーン時に呼ばれる
@@ -86,8 +87,8 @@ void AMyCharacter::Tick(float DeltaTime)
 				, true, true, FColor::Cyan, 1.0f);
 
 			FVector ProgressionVector = FVector(CameraComponent->GetForwardVector());
-
-			//VectorNormalize(&ProgressionVector);////////////////////////////////////////////////////////////////
+			FVector* pVector = &ProgressionVector;
+			//VectorNormalize(pVector);
 			FVector NewLocation = GetActorLocation() + (CurrentVelocity * DeltaTime);
 			SetActorLocation(NewLocation);
 		}
