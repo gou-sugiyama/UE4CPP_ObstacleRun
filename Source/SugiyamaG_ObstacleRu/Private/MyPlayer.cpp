@@ -10,7 +10,7 @@
 // Sets default values
 AMyPlayer::AMyPlayer()
 {
-	AutoPossessPlayer = EAutoReceiveInput::Player0;
+	//AutoPossessPlayer = EAutoReceiveInput::Player0;
 	// StaticMeshComponent‚ğ’Ç‰Á‚µARootComponent‚Éİ’è‚·‚é
 	Sphere = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
 	RootComponent = Sphere;
@@ -19,7 +19,7 @@ AMyPlayer::AMyPlayer()
 	UStaticMesh* Mesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Sphere"));
 
 	// StaticMesh‚ğStaticMeshComponent‚Éİ’è‚·‚é
-	Sphere->SetStaticMesh(Mesh);
+	Sphere->SetStaticMesh(LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Sphere")));
 
 	// Material‚ğStaticMesh‚Éİ’è‚·‚é
 	UMaterial * Material = LoadObject<UMaterial>(nullptr, TEXT("/Engine/BasicShapes/BasicShapeMaterial"));

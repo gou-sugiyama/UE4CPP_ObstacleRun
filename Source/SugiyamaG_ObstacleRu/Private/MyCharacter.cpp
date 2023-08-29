@@ -12,8 +12,8 @@ AMyCharacter::AMyCharacter()
 {
 
  	// 毎フレーム実行する処理がある場合はこれをオンにする。
-	PrimaryActorTick.bCanEverTick = false;
-	//AutoPossessPlayer = EAutoReceiveInput::Player0;
+	PrimaryActorTick.bCanEverTick = true;
+	AutoPossessPlayer = EAutoReceiveInput::Player0;
 
 	// デフォルトシーンルートの設定------------------------------
 	// SceneComponentを作成する
@@ -55,6 +55,7 @@ AMyCharacter::AMyCharacter()
 
 	//メインカメラに設定する
 	
+	StaticMeshComponent->SetSimulatePhysics(true);
 
 	//---------------------------------------------------------------
 
