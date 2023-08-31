@@ -8,5 +8,6 @@
 
 AInGameGameMode::AInGameGameMode()
 {
+	//	デフォルトポーンクラスの設定
 	DefaultPawnClass = AMyPlayer::StaticClass();
 }

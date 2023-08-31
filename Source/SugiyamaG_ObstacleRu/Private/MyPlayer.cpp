@@ -26,7 +26,7 @@ AMyPlayer::AMyPlayer()
 	Sphere->SetStaticMesh(LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Sphere")));
 
 	// MaterialをStaticMeshに設定する
-	UMaterial * Material = LoadObject<UMaterial>(nullptr, TEXT("/Engine/BasicShapes/BasicShapeMaterial"));
+	UMaterial* Material = LoadObject<UMaterial>(nullptr, TEXT("/Engine/BasicShapes/BasicShapeMaterial"));
 
 	// MaterialをStaticMeshComponentに設定する
 	Sphere->SetMaterial(0, Material);
@@ -57,8 +57,6 @@ AMyPlayer::AMyPlayer()
 
 	// SpringArmからの角度を継承しない
 	SpringArm->bInheritPitch = false;
-	//SpringArm->bInheritYaw = false;
-	//SpringArm->bInheritRoll = false;
 
 	// CameraのLagを有効にする
 	SpringArm->bEnableCameraLag = false;
@@ -94,7 +92,23 @@ void AMyPlayer::BeginPlay()
 void AMyPlayer::NotifyHit(class UPrimitiveComponent* MyComp, class AActor* Other, class UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
 {
 	Super::NotifyHit(MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
-	CanJump = true;
+
+	FVector UpVector = FVector(0, 0, 1); // 上向きのベクトル
+	float DotProduct = FVector::DotProduct(HitNormal, UpVector); // 法線ベクトルと上向きのベクトルの内積
+
+	float Threshold = 0.7f; // 上面と判定するためのしきい値 -1.0 < N < 1.0 で、1に近いほど類似している
+
+	if (DotProduct >= Threshold)
+	{
+		//	上面に当たっていた場合
+		bCanJump = true;
+
+	}
+	else
+	{
+		//	それ以外の面に当たっていた場合
+	}
+
 }
 
 // Called every frame
@@ -118,68 +132,86 @@ void AMyPlayer::SetupPlayerInputComponent(class UInputComponent* PlayerInputComp
 	PlayerInputComponent->BindAxis("Jump", this, &AMyPlayer::Jump);
 }
 
+void AMyPlayer::GoalIn(FVector Boost)
+{
+	Sphere->ComponentVelocity = FVector::ZeroVector;
+	//Sphere->AddImpulse(Boost, TEXT("None"), true);
+	bIsGoal = true;
+}
 
 // X座標に対する軸マッピングの制御
 void AMyPlayer::MoveRight(float AxisValue)
 {
-	if (AxisValue)
+	if (!bIsGoal)
 	{
-		UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("MoveRight"))
-			, true
-			, true
-			, FColor::Cyan
-			, 0.f);
+		/*if (AxisValue)
+		{
+			UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("MoveRight"))
+				, true
+				, true
+				, FColor::Cyan
+				, 0.f);
+		}*/
+
+		// FMath::Clamp 関数を使って AxisValue の値を -1.0 ~ 1.0 の範囲に制御している
+		CurrentVelocity.X = FMath::Clamp(AxisValue, -1.0f, 1.0f);
 	}
-	// FMath::Clamp 関数を使って AxisValue の値を -1.0 ~ 1.0 の範囲に制御している
-	CurrentVelocity.X = FMath::Clamp(AxisValue, -1.0f, 1.0f);
 }
 
 // Y座標に対する軸マッピングの制御
 void AMyPlayer::MoveForward(float AxisValue)
 {
-	if (AxisValue)
+	if (!bIsGoal)
 	{
-		UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("MoveForward"))
-			, true
-			, true
-			, FColor::Cyan
-			, 0.f);
-	}
+		/*if (AxisValue)
+		{
+			UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("MoveForward"))
+				, true
+				, true
+				, FColor::Cyan
+				, 0.f);
+		}*/
 
-	// FMath::Clamp 関数を使って AxisValue の値を -1.0 ~ 1.0 の範囲に制御している
-	CurrentVelocity.Y = FMath::Clamp(AxisValue, -1.0f, 1.0f);
+		// FMath::Clamp 関数を使って AxisValue の値を -1.0 ~ 1.0 の範囲に制御している
+		CurrentVelocity.Y = FMath::Clamp(AxisValue, -1.0f, 1.0f);
+	}
 }
 
 //	カメラのX軸に対する操作
 void AMyPlayer::CameraAction(float AxisValue)
 {
-	if (AxisValue)
+	if (!bIsGoal)
 	{
-		UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("CameraInput %f"), AxisValue)
-			, true
-			, true
-			, FColor::Cyan
-			, 0.f);
+		/*if (AxisValue)
+		{
+			UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("CameraInput %f"), AxisValue)
+				, true
+				, true
+				, FColor::Cyan
+				, 0.f);
+		}*/
+
+
+		AddControllerYawInput(AxisValue);
+
+		// Pawnが持っているControlの角度を取得する
+		FRotator controlRotate = GetControlRotation();
+
+		// PlayerControllerの角度を設定する
+		UGameplayStatics::GetPlayerController(this, 0)->SetControlRotation(FRotator(controlRotate.Pitch, controlRotate.Yaw, 0.0f));
 	}
-
-
-	AddControllerYawInput(AxisValue);
-
-	// Pawnが持っているControlの角度を取得する
-	FRotator controlRotate = GetControlRotation();
-
-	// PlayerControllerの角度を設定する
-	UGameplayStatics::GetPlayerController(this, 0)->SetControlRotation(FRotator(controlRotate.Pitch, controlRotate.Yaw, 0.0f));
-
 }
 
 //	ジャンプ
 void AMyPlayer::Jump(float AxisValue)
 {
-	if (AxisValue && CanJump)
+	if (!bIsGoal)
 	{
-		Sphere->AddImpulse(FVector(0.0f, 0.0f, JumpImpluse), TEXT("None"), true);
-		CanJump = false;
+		if (AxisValue && bCanJump)
+		{
+			Sphere->AddImpulse(FVector(0.0f, 0.0f, JumpImpluse), TEXT("None"), true);
+			bCanJump = false;
+		}
 	}
 }
 

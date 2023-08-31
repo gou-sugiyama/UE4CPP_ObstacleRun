@@ -39,6 +39,9 @@ public:
 	// 入力に機能をバインドするために呼び出される
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	//	ゴールした時に加速する
+	void GoalIn(FVector Boost);
+
 
 private:
 	/** Character用のStaticMesh : Sphere */
@@ -76,5 +79,8 @@ private:
 	float JumpImpluse = 500.0f;
 
 	// ジャンプができるか判定するフラグ
-	bool CanJump = false;
+	bool bCanJump = false;
+
+	//	ゴールしたか（操作不能にする余裕がないのでごり押し）
+	bool bIsGoal = false;
 };
